@@ -2,4 +2,5 @@
 
 brew install git
 brew install fish
+brew install starship
 brew install stow

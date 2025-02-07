@@ -1,0 +1,11 @@
+theme = ayu
+font-size = 16
+background-opacity = 0.95
+background-blur-radius = 20
+cursor-style = block
+confirm-close-surface = false
+working-directory = "/Users/jorisg"
+window-inherit-working-directory = true
+window-save-state = never
+window-new-tab-position = end
+shell-integration = none
