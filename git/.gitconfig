@@ -1,0 +1,32 @@
+[user]
+	name = Joris Girardot
+	email = joris@girardot.eu
+[color]
+	ui = true
+; [pager]
+;        diff = diff-so-fancy | less --tabs=1,5 -RFX
+;        show = diff-so-fancy | less --tabs=1,5 -RFX
+[push]
+	autoSetupRemote = true
+	default = current
+[checkout]
+	defaultRemote=origin
+[alias]
+	squash-all = "!f(){ git reset --soft master; git commit -am \"$@\";};f"
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[credential]
+	helper = store
+[core]
+	pager = delta
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+	side-by-side = true
+	line-numbers = true
+[merge]
+	conflictStyle = zdiff3
