@@ -5,6 +5,7 @@
 ---@type LazySpec
 return {
 	"AstroNvim/astrocommunity",
+	{ import = "astrocommunity.pack.lua" },
 	{ import = "astrocommunity.git.git-blame-nvim" },
 	{ import = "astrocommunity.completion.copilot-cmp" },
 	{ import = "astrocommunity.utility.noice-nvim" },
