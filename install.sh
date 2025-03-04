@@ -12,16 +12,24 @@ brew install bat
 brew install fzf
 brew install ripgrep
 brew install fd
+brew install zoxide
 brew install neovim
 brew install tmux
 brew install btop
-brew install yazi
-brew install zoxide
+brew install yazi ffmpeg sevenzip jq poppler imagemagick font-symbols-only-nerd-font
 
 # Cask formula
 brew install --cask kitty
 brew install --cask raycast
-brew install --cask font-jetbrains-mono-nerd-font
 brew install --cask pearcleaner
+
+# Fonts
+brew install --cask font-jetbrains-mono-nerd-font
+brew install --cask font-victor-mono-nerd-font
+brew install --cask font-im-writing-nerd-font
+
+ya pack -a Reledia/glow
+ya pack -a yazi-rs/flavors:catppuccin-moch
+ya pack -a gosxrgxx/flexoki-dark
 
 stow --dotfiles */

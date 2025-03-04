@@ -10,6 +10,7 @@ return {
 	{ import = "astrocommunity.completion.copilot-cmp" },
 	{ import = "astrocommunity.utility.noice-nvim" },
 	{ import = "astrocommunity.recipes.cache-colorscheme" },
+	{ import = "astrocommunity.recipes.heirline-mode-text-statusline" },
 	{ import = "astrocommunity.colorscheme.bamboo-nvim" },
 	{ import = "astrocommunity.colorscheme.catppuccin" },
 	{ import = "astrocommunity.colorscheme.nightfox-nvim" },
