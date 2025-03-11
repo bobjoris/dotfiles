@@ -11,6 +11,8 @@
 [push]
 	autoSetupRemote = true
 	default = current
+[pull]
+  rebase = true
 [checkout]
 	defaultRemote=origin
 [alias]

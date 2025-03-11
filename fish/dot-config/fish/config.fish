@@ -36,6 +36,7 @@ alias ghpr='gh pr view -w'
 alias gpf='git push -f'
 alias gaa='git add -A'
 alias grm='git rebase master'
+alias lg='lazygit'
 
 alias json='jq'
 
