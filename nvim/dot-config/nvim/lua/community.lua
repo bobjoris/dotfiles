@@ -11,8 +11,11 @@ return {
 	{ import = "astrocommunity.utility.noice-nvim" },
 	{ import = "astrocommunity.recipes.cache-colorscheme" },
 	{ import = "astrocommunity.recipes.heirline-mode-text-statusline" },
-	{ import = "astrocommunity.colorscheme.bamboo-nvim" },
 	{ import = "astrocommunity.colorscheme.catppuccin" },
+	{ import = "astrocommunity.colorscheme.dracula-nvim" },
+	{ import = "astrocommunity.colorscheme.everforest" },
+	{ import = "astrocommunity.colorscheme.kanagawa-nvim" },
+	{ import = "astrocommunity.colorscheme.kanagawa-paper-nvim" },
 	{ import = "astrocommunity.colorscheme.nightfox-nvim" },
 	{ import = "astrocommunity.colorscheme.vscode-nvim" },
 	-- import/override with your plugins folder
