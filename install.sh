@@ -17,6 +17,7 @@ brew install neovim
 brew install tmux
 brew install btop
 brew install yazi ffmpeg sevenzip jq poppler imagemagick font-symbols-only-nerd-font
+brew install sponge
 
 # Cask formula
 brew install --cask kitty
