@@ -60,27 +60,22 @@ function y
 end
 
 function format_json
-    if test -z "$argv[1]"
+    argparse e/edit -- $argv
+    or return 1
+
+    if test (count $argv) -lt 1
         echo "Usage: format_json <filename> [-e|--edit]"
         return 1
     end
 
     set file $argv[1]
-    set edit_mode 0
-
-    # Check for edit flag
-    if test (count $argv) -gt 1
-        if test "$argv[2]" = "-e" -o "$argv[2]" = "--edit"
-            set edit_mode 1
-        end
-    end
 
     if test -f "$file"
         jq . "$file" | sponge "$file"
         echo "Formatted: $file"
 
-        # Open in Vim if edit mode is enabled
-        if test $edit_mode -eq 1
+        # Open in Vim if -e or --edit was provided
+        if set -q _flag_e
             vim "$file"
         end
     else
@@ -88,7 +83,6 @@ function format_json
         return 1
     end
 end
-
 function starship_transient_prompt_func
     starship module character
 end
