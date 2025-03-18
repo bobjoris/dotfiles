@@ -59,7 +59,7 @@ function y
     rm -f -- "$tmp"
 end
 
-function format_json
+function format-json
     argparse e/edit -- $argv
     or return 1
 
