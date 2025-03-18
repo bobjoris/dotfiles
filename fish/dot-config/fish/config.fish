@@ -64,7 +64,7 @@ function format_json
     or return 1
 
     if test (count $argv) -lt 1
-        echo "Usage: format_json <filename> [-e|--edit]"
+        echo "Usage: format_json [-e|--edit] <filename>"
         return 1
     end
 
@@ -83,6 +83,7 @@ function format_json
         return 1
     end
 end
+
 function starship_transient_prompt_func
     starship module character
 end
