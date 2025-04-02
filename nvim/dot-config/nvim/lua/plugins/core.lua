@@ -15,7 +15,7 @@ return {
 			},
 		},
 		features = {
-			diagnostics = { virtual_text = false, virtual_lines = true }, -- diagnostic settings on startup
+			diagnostics = { virtual_text = true, virtual_lines = false }, -- diagnostic settings on startup
 		},
 	},
 }
