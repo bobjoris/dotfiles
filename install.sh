@@ -28,6 +28,7 @@ brew install --cask pearcleaner
 brew install --cask font-jetbrains-mono-nerd-font
 brew install --cask font-victor-mono-nerd-font
 brew install --cask font-im-writing-nerd-font
+brew install --cask font-maple-mono-nf
 
 ya pack -a Reledia/glow
 ya pack -a yazi-rs/flavors:catppuccin-moch
