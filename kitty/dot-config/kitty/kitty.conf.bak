@@ -2454,7 +2454,7 @@
 
 
 # BEGIN_KITTY_THEME
-# Carbonfox
+# Kanagawa
 include current-theme.conf
 # END_KITTY_THEME
 
@@ -2471,7 +2471,7 @@ map alt+1 disable_ligatures_in active always
 map alt+2 disable_ligatures_in all never    
 map alt+3 disable_ligatures_in tab cursor   
 dynamic_background_opacity yes
-background_opacity 0.95
+background_opacity 0.90
 background_blur 15
 cursor_shape block
 shell_integration no-cursor

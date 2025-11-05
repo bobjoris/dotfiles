@@ -1,7 +1,7 @@
-theme = ayu
+theme = Ayu
 font-family = "Maple Mono NF"
 font-size = 16
-background-opacity = 0.95
+background-opacity = 0.90
 background-blur-radius = 20
 cursor-style = block
 confirm-close-surface = false
