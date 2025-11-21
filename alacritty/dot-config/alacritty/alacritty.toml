@@ -1,7 +1,18 @@
 [general]
 import = [
-    "~/.config/alacritty/themes/themes/afterglow.toml"
+    "~/.config/alacritty/themes/themes/nightfox.toml"
 ]
+
+[terminal]
+shell = { program = "/opt/homebrew/bin/fish", args = [
+    "--login",
+    "-c",
+    "cd ~; exec fish"
+] }
+
 [font]
 size = 16.0
-normal = { family = "VictorMono Nerd Font Mono", style = "Regular" }
+normal = { family = "Maple Mono NF", style = "Thin" }
+bold = { family = "Maple Mono NF", style = "Regular" }
+italic = { family = "Maple Mono NF", style = "Thin_Italic" }
+bold_italic = { family = "Maple Mono NF", style = "Regular_Italic" }

@@ -4,6 +4,7 @@ end
 
 set fish_greeting ""
 
+set -gx LANG en_GB.UTF-8
 set -gx EDITOR nvim
 
 set -gx PATH bin $PATH
