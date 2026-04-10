@@ -16,3 +16,8 @@ normal = { family = "Maple Mono NF", style = "Thin" }
 bold = { family = "Maple Mono NF", style = "Regular" }
 italic = { family = "Maple Mono NF", style = "Thin_Italic" }
 bold_italic = { family = "Maple Mono NF", style = "Regular_Italic" }
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Shift"
+chars = "\u001B\r"

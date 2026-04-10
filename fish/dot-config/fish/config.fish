@@ -43,14 +43,17 @@ alias json='jq'
 
 alias j18="set -x JAVA_HOME (/usr/libexec/java_home -v 18); java -version"
 alias j21="set -x JAVA_HOME (/usr/libexec/java_home -v 21); java -version"
+alias j25="set -x JAVA_HOME (/usr/libexec/java_home -v 25); java -version"
 
-export JAVA_HOME=$(/usr/libexec/java_home -v 21)
+set -x JAVA_HOME (/usr/libexec/java_home -v 25)
 export MANPAGER="nvim +Man!"
 
 fzf_configure_bindings --directory=\cf --variables=\e\cv
 
 op completion fish | source
 zoxide init fish | source
+fnm env --use-on-cd --shell fish | source
+
 
 function y
     set tmp (mktemp -t "yazi-cwd.XXXXXX")
@@ -96,5 +99,10 @@ end
 
 set -gx STARSHIP_LOG error
 
+export DOCKER_HOST=unix://$HOME/.docker/run/docker.sock
 starship init fish | source
 enable_transience
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
