@@ -41,4 +41,6 @@ if status is-interactive
     fnm env --use-on-cd --shell fish | source
     starship init fish | source
     enable_transience
+
+    gradle-gh-env
 end
