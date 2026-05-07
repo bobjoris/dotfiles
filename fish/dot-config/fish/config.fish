@@ -27,7 +27,7 @@ alias preview="fzf --preview 'bat --color \"always\" --line-range=:500 {}'"
 
 alias lg='lazygit'
 alias json='jq'
-alias mdc='/Users/jorisg/Dev/MiddayCommander/mdc'
+alias mdc="$HOME/Dev/MiddayCommander/mdc"
 
 alias j18="set -gx JAVA_HOME (/usr/libexec/java_home -v 18); java -version"
 alias j21="set -gx JAVA_HOME (/usr/libexec/java_home -v 21); java -version"
