@@ -1,20 +1,14 @@
-if status is-interactive
-    # Commands to run in interactive sessions can go here
-end
-
 set fish_greeting ""
 
 set -gx LANG en_GB.UTF-8
 set -gx EDITOR nvim
+set -gx MANPAGER "nvim +Man!"
+set -gx STARSHIP_LOG error
+set -gx DOCKER_HOST unix://$HOME/.docker/run/docker.sock
+set -gx BUN_INSTALL "$HOME/.bun"
+set -gx JAVA_HOME (/usr/libexec/java_home -v 25)
 
-set -gx PATH bin $PATH
-set -gx PATH ~/bin $PATH
-set -gx PATH ~/.local/bin $PATH
-set -gx PATH /usr/local/bin $PATH
-set -gx PATH /opt/homebrew/bin $PATH
-set -gx PATH /opt/homebrew/opt $PATH
-set -gx PATH ~/.cargo/bin $PATH
-set -gx PATH ~/.nvm/versions/node/v21.5.0/bin $PATH
+fish_add_path ~/bin ~/.local/bin /usr/local/bin /opt/homebrew/bin /opt/homebrew/opt ~/.cargo/bin $BUN_INSTALL/bin
 
 if type -q eza
     alias ls="eza --icons"
@@ -24,36 +18,27 @@ if type -q eza
     alias ll="eza -l -g --icons"
 end
 
-command -qv btop && alias top btop
+command -q btop && alias top btop
+command -q nvim && alias vim nvim
 
 alias cdd="cd ~/Dev && cd (eza | fzf)"
 alias cat='bat'
 alias preview="fzf --preview 'bat --color \"always\" --line-range=:500 {}'"
-command -qv nvim && alias vim nvim
 
 alias lg='lazygit'
 alias json='jq'
 alias mdc='/Users/jorisg/Dev/MiddayCommander/mdc'
 
-alias j18="set -x JAVA_HOME (/usr/libexec/java_home -v 18); java -version"
-alias j21="set -x JAVA_HOME (/usr/libexec/java_home -v 21); java -version"
-alias j25="set -x JAVA_HOME (/usr/libexec/java_home -v 25); java -version"
+alias j18="set -gx JAVA_HOME (/usr/libexec/java_home -v 18); java -version"
+alias j21="set -gx JAVA_HOME (/usr/libexec/java_home -v 21); java -version"
+alias j25="set -gx JAVA_HOME (/usr/libexec/java_home -v 25); java -version"
 
-set -x JAVA_HOME (/usr/libexec/java_home -v 25)
-export MANPAGER="nvim +Man!"
+if status is-interactive
+    fzf_configure_bindings --directory=\cf --variables=\e\cv
 
-fzf_configure_bindings --directory=\cf --variables=\e\cv
-
-op completion fish | source
-zoxide init fish | source
-fnm env --use-on-cd --shell fish | source
-
-set -gx STARSHIP_LOG error
-
-export DOCKER_HOST=unix://$HOME/.docker/run/docker.sock
-starship init fish | source
-enable_transience
-
-# bun
-set --export BUN_INSTALL "$HOME/.bun"
-set --export PATH $BUN_INSTALL/bin $PATH
+    op completion fish | source
+    zoxide init fish | source
+    fnm env --use-on-cd --shell fish | source
+    starship init fish | source
+    enable_transience
+end

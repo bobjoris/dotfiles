@@ -13,9 +13,9 @@ function format-json
         jq . "$file" | sponge "$file"
         echo "Formatted: $file"
 
-        # Open in Vim if -e or --edit was provided
+        # Open in editor if -e or --edit was provided
         if set -q _flag_e
-            vim "$file"
+            $EDITOR "$file"
         end
     else
         echo "Error: File '$file' not found."
