@@ -20,6 +20,8 @@ brew_packages=(
     git
     gh
     git-delta
+    git-lfs
+    lazygit
     starship
     eza
     stow
@@ -29,10 +31,17 @@ brew_packages=(
     fd
     zoxide
     neovim
-    tmux
     btop
-    sponge
+    moreutils
     fnm
+    glow
+    zellij
+    ack
+    ctop
+    exiftool
+    neofetch
+    tlrc
+    yq
     # yazi + previewer deps
     yazi
     ffmpeg
@@ -40,7 +49,7 @@ brew_packages=(
     jq
     poppler
     imagemagick
-    font-symbols-only-nerd-font
+    hexyl
 )
 brew install "${brew_packages[@]}"
 
@@ -48,12 +57,17 @@ brew install "${brew_packages[@]}"
 log "Installing brew casks"
 brew_casks=(
     kitty
+    ghostty
+    1password-cli
+    corretto@25
     raycast
     pearcleaner
+    flux-app
     font-jetbrains-mono-nerd-font
     font-victor-mono-nerd-font
     font-im-writing-nerd-font
     font-maple-mono-nf
+    font-symbols-only-nerd-font
 )
 brew install --cask "${brew_casks[@]}"
 
