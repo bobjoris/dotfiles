@@ -31,15 +31,9 @@ alias cat='bat'
 alias preview="fzf --preview 'bat --color \"always\" --line-range=:500 {}'"
 command -qv nvim && alias vim nvim
 
-alias gbn='git --no-pager branch'
-alias ghb='gh browse'
-alias ghpr='gh pr view -w'
-alias gpf='git push -f'
-alias gaa='git add -A'
-alias grm='git rebase master'
 alias lg='lazygit'
-
 alias json='jq'
+alias mdc='/Users/jorisg/Dev/MiddayCommander/mdc'
 
 alias j18="set -x JAVA_HOME (/usr/libexec/java_home -v 18); java -version"
 alias j21="set -x JAVA_HOME (/usr/libexec/java_home -v 21); java -version"
@@ -53,49 +47,6 @@ fzf_configure_bindings --directory=\cf --variables=\e\cv
 op completion fish | source
 zoxide init fish | source
 fnm env --use-on-cd --shell fish | source
-
-
-function y
-    set tmp (mktemp -t "yazi-cwd.XXXXXX")
-    yazi $argv --cwd-file="$tmp"
-    if set cwd (command cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
-        builtin cd -- "$cwd"
-    end
-    rm -f -- "$tmp"
-end
-
-function format-json
-    argparse e/edit -- $argv
-    or return 1
-
-    if test (count $argv) -lt 1
-        echo "Usage: format_json [-e|--edit] <filename>"
-        return 1
-    end
-
-    set file $argv[1]
-
-    if test -f "$file"
-        jq . "$file" | sponge "$file"
-        echo "Formatted: $file"
-
-        # Open in Vim if -e or --edit was provided
-        if set -q _flag_e
-            vim "$file"
-        end
-    else
-        echo "Error: File '$file' not found."
-        return 1
-    end
-end
-
-function starship_transient_prompt_func
-    starship module character
-end
-
-function starship_transient_rprompt_func
-    starship module time
-end
 
 set -gx STARSHIP_LOG error
 

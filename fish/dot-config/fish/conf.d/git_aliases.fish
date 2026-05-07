@@ -88,6 +88,13 @@ alias grh='git reset HEAD'
 alias grhh='git reset HEAD --hard'
 alias gclean='git reset --hard; and git clean -dfx'
 alias gwc='git whatchanged -p --abbrev-commit --pretty=medium'
+alias gbn='git --no-pager branch'
+alias ghb='gh browse'
+alias ghpr='gh pr view -w'
+alias gpf='git push --force-with-lease'
+alias gaa='git add -A'
+alias grm='git rebase master'
+alias ghash='git hash | pbcopy && git hash'
 
 #remove the gf alias
 #alias gf='git ls-files | grep'

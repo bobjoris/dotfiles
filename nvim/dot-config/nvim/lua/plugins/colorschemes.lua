@@ -1,5 +1,5 @@
 return {
-	"p00f/alabaster.nvim",
+	"dchinmay2/alabaster.nvim",
 	"Shatur/neovim-ayu",
 	"ThorstenRhau/token",
 }

@@ -8,6 +8,7 @@ return {
 	{ import = "astrocommunity.completion.copilot-lua-cmp" },
 	{ import = "astrocommunity.pack.lua" },
 	{ import = "astrocommunity.pack.python" },
+	{ import = "astrocommunity.pack.markdown" },
 	{ import = "astrocommunity.git.git-blame-nvim" },
 	-- { import = "astrocommunity.recipes.ai" },
 	{ import = "astrocommunity.recipes.cache-colorscheme" },

@@ -17,6 +17,7 @@
 	defaultRemote=origin
 [alias]
 	squash-all = "!f(){ git reset --soft master; git commit -am \"$@\";};f"
+	hash = "!f(){ git log -n 1 --pretty=format:"%H";};f" 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f

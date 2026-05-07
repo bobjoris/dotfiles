@@ -10,3 +10,6 @@ run = 'piper -- eza -TL=2 --color=always --icons=always --group-directories-firs
 [[plugin.append_previewers]]
 url = "*"
 run = 'piper -- hexyl --border=none --terminal-width=$w "$1"'
+[preview]
+max_width = 2800
+max_height = 2800
