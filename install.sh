@@ -103,7 +103,7 @@ if command -v ya >/dev/null 2>&1; then
             log "yazi pack '$pack' already installed — skipping"
         else
             log "Installing yazi pack '$pack'"
-            ya pack -a "$pack" || warn "yazi pack '$pack' failed"
+            ya pkg add "$pack" || warn "yazi pack '$pack' failed"
         fi
     done
 else
