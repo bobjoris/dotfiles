@@ -1,2 +1,5 @@
 .DS_Store
 *.bak
+yazi/dot-config/yazi/flavors/
+yazi/dot-config/yazi/plugins/
+yazi/dot-config/yazi/package.toml
