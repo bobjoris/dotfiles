@@ -14,7 +14,6 @@ else
 fi
 
 # --- Brew formulae -----------------------------------------------------------
-log "Installing brew formulae"
 brew_packages=(
     fish
     git
@@ -51,10 +50,19 @@ brew_packages=(
     imagemagick
     hexyl
 )
-brew install "${brew_packages[@]}"
+installed_formulae="$(brew list --formula -1 2>/dev/null || true)"
+to_install=()
+for pkg in "${brew_packages[@]}"; do
+    grep -qx "$pkg" <<<"$installed_formulae" || to_install+=("$pkg")
+done
+if [ ${#to_install[@]} -gt 0 ]; then
+    log "Installing brew formulae: ${to_install[*]}"
+    brew install "${to_install[@]}"
+else
+    log "All brew formulae already installed — skipping"
+fi
 
 # --- Brew casks --------------------------------------------------------------
-log "Installing brew casks"
 brew_casks=(
     kitty
     ghostty
@@ -69,14 +77,36 @@ brew_casks=(
     font-maple-mono-nf
     font-symbols-only-nerd-font
 )
-brew install --cask "${brew_casks[@]}"
+installed_casks="$(brew list --cask -1 2>/dev/null || true)"
+to_install=()
+for cask in "${brew_casks[@]}"; do
+    grep -qx "$cask" <<<"$installed_casks" || to_install+=("$cask")
+done
+if [ ${#to_install[@]} -gt 0 ]; then
+    log "Installing brew casks: ${to_install[*]}"
+    brew install --cask "${to_install[@]}"
+else
+    log "All brew casks already installed — skipping"
+fi
 
 # --- Yazi packs --------------------------------------------------------------
+yazi_package_toml="$HOME/.config/yazi/package.toml"
+yazi_has_pack() {
+    [ -f "$yazi_package_toml" ] && grep -qF "\"$1\"" "$yazi_package_toml"
+}
 if command -v ya >/dev/null 2>&1; then
-    log "Installing yazi packs"
-    ya pack -a Reledia/glow            || warn "yazi pack 'glow' failed"
-    ya pack -a yazi-rs/flavors:catppuccin-mocha || warn "yazi pack 'catppuccin-mocha' failed"
-    ya pack -a gosxrgxx/flexoki-dark   || warn "yazi pack 'flexoki-dark' failed"
+    for pack in \
+        Reledia/glow \
+        yazi-rs/flavors:catppuccin-mocha \
+        gosxrgxx/flexoki-dark
+    do
+        if yazi_has_pack "$pack"; then
+            log "yazi pack '$pack' already installed — skipping"
+        else
+            log "Installing yazi pack '$pack'"
+            ya pack -a "$pack" || warn "yazi pack '$pack' failed"
+        fi
+    done
 else
     warn "yazi (ya) not on PATH — skipping yazi packs"
 fi
