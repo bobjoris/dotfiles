@@ -114,8 +114,35 @@ fi
 if ! command -v stow >/dev/null 2>&1; then
     die "stow is not installed (expected after brew step)"
 fi
-log "Stowing dotfiles"
+# --- AstroNvim ---------------------------------------------------------------
+# Run BEFORE stow so the template's init.lua and lua/ are real files in
+# ~/.config/nvim, then stow drops our overrides on top.
 cd "$(dirname "$0")"
+nvim_dir="$HOME/.config/nvim"
+if [ -e "$nvim_dir/init.lua" ]; then
+    log "AstroNvim already installed at $nvim_dir — skipping clone"
+else
+    # Un-stow any prior nvim symlinks so the template clone has a clean target
+    if [ -L "$nvim_dir" ] || [ -L "$nvim_dir/lua" ]; then
+        log "Un-stowing previous nvim links before AstroNvim install"
+        stow -D --dotfiles nvim || true
+    fi
+    if [ -e "$nvim_dir" ] && [ ! -d "$nvim_dir" ]; then
+        die "$nvim_dir exists and is not a directory — remove it manually"
+    fi
+    if [ -d "$nvim_dir" ] && [ -n "$(ls -A "$nvim_dir" 2>/dev/null)" ]; then
+        die "$nvim_dir is not empty and has no init.lua — resolve manually"
+    fi
+    log "Cloning AstroNvim template into $nvim_dir"
+    rm -rf "$nvim_dir"
+    git clone --depth 1 https://github.com/AstroNvim/template "$nvim_dir"
+    rm -rf "$nvim_dir/.git"
+fi
+# Drop the template's community.lua so stow can symlink ours
+[ -f "$nvim_dir/lua/community.lua" ] && [ ! -L "$nvim_dir/lua/community.lua" ] \
+    && rm -f "$nvim_dir/lua/community.lua"
+
+log "Stowing dotfiles"
 stow --dotfiles */
 
 # --- Default shell -----------------------------------------------------------
