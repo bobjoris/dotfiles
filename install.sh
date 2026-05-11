@@ -89,4 +89,18 @@ log "Stowing dotfiles"
 cd "$(dirname "$0")"
 stow --dotfiles */
 
+# --- Default shell -----------------------------------------------------------
+fish_path="$(command -v fish || true)"
+if [ -z "$fish_path" ]; then
+    warn "fish not on PATH — skipping default shell setup"
+elif [ "${SHELL:-}" = "$fish_path" ]; then
+    log "fish is already the default shell — skipping"
+else
+    log "Setting fish as default shell"
+    if ! grep -qxF "$fish_path" /etc/shells; then
+        echo "$fish_path" | sudo tee -a /etc/shells >/dev/null
+    fi
+    chsh -s "$fish_path"
+fi
+
 log "Done."
