@@ -38,7 +38,6 @@ brew_packages=(
     ack
     ctop
     exiftool
-    neofetch
     tlrc
     yq
     # yazi + previewer deps
