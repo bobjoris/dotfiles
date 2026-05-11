@@ -13,6 +13,6 @@ function gradle-gh-env --description 'Inject GitHub credentials into Gradle env 
         test -n "$user"; and set -U GRADLE_GH_USER "$user"
     end
 
-    set -gx ORG_GRADLE_PROJECT_githubUsername "$GRADLE_GH_USER"
-    set -gx ORG_GRADLE_PROJECT_githubToken "$token"
+    set -gx GITHUB_USERNAME "$GRADLE_GH_USER"
+    set -gx GITHUB_TOKEN "$token"
 end

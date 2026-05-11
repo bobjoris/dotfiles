@@ -29,9 +29,9 @@ alias lg='lazygit'
 alias json='jq'
 alias mdc="$HOME/Dev/MiddayCommander/mdc"
 
-alias j18="set -gx JAVA_HOME (/usr/libexec/java_home -v 18); java -version"
-alias j21="set -gx JAVA_HOME (/usr/libexec/java_home -v 21); java -version"
-alias j25="set -gx JAVA_HOME (/usr/libexec/java_home -v 25); java -version"
+abbr -a j18 j 18
+abbr -a j21 j 21
+abbr -a j25 j 25
 
 if status is-interactive
     fzf_configure_bindings --directory=\cf --variables=\e\cv
